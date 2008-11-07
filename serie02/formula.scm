@@ -38,4 +38,36 @@
         ((biconditional? formula)
          (eq? (evaluate (biconditional-left formula) assignment)
               (evaluate (biconditional-right formula) assignment)))))
- 
+(define (formula->string formula)
+  (cond ((eq? formula #t) "1")
+        ((eq? formula #f) "0")
+        ((variable? formula)
+         (string-append "X_" (number->string (variable-index formula))))
+        ((negation? formula)
+         (string-append "¬" (formula->string (negation-negated formula))))
+        ((conjunction? formula)
+         (string-append "("
+                        (formula->string (conjunction-left formula))
+                        " ∧ "
+                        (formula->string (conjunction-right formula))
+                        ")"))
+        ((disjunction? formula)
+         (string-append "("
+                        (formula->string (disjunction-left formula))
+                        " ∨ "
+                        (formula->string (disjunction-right formula))
+                        ")"))
+        ((conditional? formula)
+         (string-append "("
+                        (formula->string (conditional-left formula))
+                        " → "
+                        (formula->string (conditional-right formula))
+                        ")"))
+        ((biconditional? formula)
+         (string-append "(" 
+                        (formula->string (biconditional-left formula))
+                        " ↔ "
+                        (formula->string (biconditional-right formula)) 
+                        ")"))
+        
+  ))
