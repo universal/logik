@@ -1,0 +1,67 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage{ifpdf}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\title{}
+\author{Johannes Hedtrich, Christopher Hlubek}
+\date{\today}
+\begin{document}
+Johannes Hedtrich, Christopher Hlubek\\
+\section*{1.4 Induktive Definition}
+Sei $d$ eine Funktion $d: F_{AL} \rightarrow \mathbb{N}$, die zu jeder aussagenlogischen Formel $\psi \in F_{AL}$ die Länge von $\psi$ liefert.
+
+\noindent
+\textbf{1. Basiszuordnung}\\
+Für $i \in \mathbb{N}$\\
+$d(0) = d(1) = d(X_i) = 0$\\
+\textbf{2. Induktionsregeln}\\
+$d(\neg\psi) = 1 + d(\psi)$\\
+Für $\ast \in \{\wedge, \vee, \rightarrow,\leftrightarrow \}$\\
+$d((\varphi \ast \psi)) = 1 + max(d(\varphi), d(\psi))$
+
+\section*{1.5 Modellierung}
+
+\subsection*{(a)}
+Definiere die Formel $\varphi$ so, dass jedem Objekt genau eine Menge zugeordnet ist:\\
+
+$[\varphi]^{\beta} = 
+\begin{cases}
+1, & {\textrm{falls jedem Objekt genau eine Menge zugeordnet ist}}\\
+0, & {\textrm{sonst}}
+\end{cases}
+$
+
+\textbf{Idee:} Nutze eine DNF, so dass in jeder Klausel immer nur eine Variable nicht negiert wird. Somit ist die Formel nur dann wahr, wenn genau eine der Klauseln wahr wird.
+
+$\varphi = \bigwedge_{i \in \{1..n\}}(\bigvee_{j \in \{1..m\}}(X_{i,j} \wedge \bigwedge_{k \in \{1..m\} \backslash \neq \{j\}} \neg X_{i,k}))$
+
+\subsection*{(b)}
+Definiere die Formel $\psi$ so, dass jeder Menge höchstens ein Element zugeordnet wird:\\
+
+$[\psi]^{\beta} = 
+\begin{cases}
+1, & {\textrm{falls in jeder Menge höchstens ein Element zugeordnet ist}}\\
+0, & {\textrm{sonst}}
+\end{cases}
+$
+
+$\psi = \bigwedge_{j \in \{1..m\}}(
+(\bigwedge_{j \in \{1..m\}} \neg X_{i,j}) \vee
+\bigvee_{i \in \{1..n\}}(X_{i,j} \wedge \bigwedge_{k \in \{1..n\} \backslash \{i\}} \neg X_{k,j})
+)$
+
+\subsection*{(c)}
+
+Für $[(\varphi \wedge \psi)]^{\beta}$ gilt
+
+$
+\begin{cases}
+n \leq m, & {\textrm{Es gibt Belegungen für welche die Interpretation der Formel wahr ist}}\\
+n > m, & {\textrm{Es gibt keine Belegung, für welche die Interpretation der Formel wahr ist}}
+\end{cases}
+$
+
+\end{document}
+
