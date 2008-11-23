@@ -38,8 +38,124 @@ sind unerfüllbar.
 
 \subsection*{Beweis}
 
-Idee: Zeige $\varphi \equiv 0$
-\subsubsection*{Für $\varphi_a$}
+Idee: Zeige $\varphi \equiv 0$\\
+O.B.d.A. gelte im Folgenden $X_0 \not\in \textrm{vars}(\varphi) \cup \textrm{vars}(\psi) \cup \textrm{vars}(\chi) \cup \textrm{vars}(\rho)$.
 
+\setcounter{equation}{-1}
+\begin{align}
+  \varphi_a
+    & =\neg((((\theta \wedge \varphi) \wedge \neg \varphi) \vee \psi) \rightarrow \psi) \\
+    & \equiv \neg(((\theta \wedge (\varphi \wedge \neg \varphi)) \vee \psi) \rightarrow \psi) \\
+    & \equiv \neg(((\theta \wedge 0) \vee \psi) \rightarrow \psi) \\
+    & \equiv \neg((0 \vee \psi) \rightarrow \psi) \\
+    & \equiv \neg(\psi \rightarrow \psi) \\
+    & \equiv \neg(\neg \psi \vee \psi) \\
+    & \equiv \neg \neg \psi \wedge \neg \psi \\
+    & \equiv \psi \wedge \neg \psi \\
+    & \equiv 0
+\end{align}
+
+\begin{enumerate} 
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Tertium non datur \& 2. Ersetzungslemma
+  \item Größtes und kleinstes Element \& 2. Ersetzungslemma
+  \item Neutrales Element \& 2. Ersetzungslemma
+  \item Konditionalelimination \& 2. Ersetzungslemma
+  \item Doppelte Negation \& 2. Ersetzungslemma
+  \item Tertium non datur
+\end{enumerate}
+
+\setcounter{equation}{-1}
+\begin{align}
+  \varphi_b 
+    & = ((\neg (\neg \psi \rightarrow \neg \varphi) \wedge (\varphi \rightarrow \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg (\neg \neg \psi \vee \neg \varphi) \wedge (\varphi \rightarrow \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg (\neg \neg \psi \vee \neg \varphi) \wedge (\neg \varphi \vee \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg (\psi \vee \neg \varphi) \wedge (\neg \varphi \vee \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv (((\neg \psi \wedge \neg \neg \varphi) \wedge (\neg \varphi \vee \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv (((\neg \psi \wedge \varphi) \wedge (\neg \varphi \vee \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg \psi \wedge (\varphi \wedge (\neg \varphi \vee \psi))) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg \psi \wedge ((\varphi \wedge \neg \varphi) \vee (\varphi \wedge \psi))) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg \psi \wedge (0 \vee (\varphi \wedge \psi))) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((\neg \psi \wedge (\varphi \wedge \psi)) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv (((\neg \psi \wedge \psi) \wedge \varphi) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv ((0 \wedge \varphi) \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv (0 \wedge \neg(\varphi \wedge \neg \psi)) \\
+    & \equiv 0
+\end{align}
+
+\begin{enumerate} 
+  \item Konditionalelimination \& 2. Ersetzungslemma
+  \item Konditionalelimination \& 2. Ersetzungslemma
+  \item Doppelte Negation \& 2. Ersetzungslemma
+  \item De Morgan \& 2. Ersetzungslemma
+  \item Doppelte Negation \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Tertium non datur \& 2. Ersetzungslemma
+  \item Neutrales Element \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Tertium non datur \& 2. Ersetzungslemma
+  \item Größtes und kleinstes Element \& 2. Ersetzungslemma
+  \item Größtes und kleinstes Element
+\end{enumerate}
+\clearpage
+\setcounter{equation}{-1}
+\begin{align}
+  \varphi_c 
+    & = (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \wedge \neg \theta) \vee \neg(\neg \psi \rightarrow \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \wedge \neg \theta) \vee \neg(\neg \neg \psi \vee \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \wedge \neg \theta) \vee \neg(\psi \vee \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \wedge \neg \theta) \vee (\neg \psi \wedge \neg \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge (((\neg \varphi \wedge \neg \theta) \vee \neg \psi) \wedge ((\neg \varphi \wedge \neg \theta) \vee \neg \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge (((\neg \varphi \wedge \neg \theta) \vee \neg \psi) \wedge \neg \theta)) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge (((\neg \varphi \vee \neg \psi) \wedge (\neg \theta \vee \neg \psi)) \wedge \neg \theta)) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \vee \neg \psi) \wedge ((\neg \theta \vee \neg \psi) \wedge \neg \theta))) \\
+    & \equiv (((\psi \wedge \varphi) \vee \theta) \wedge ((\neg \varphi \vee \neg \psi) \wedge \neg \theta)) \\
+    & \equiv (((\psi \vee \theta) \wedge (\varphi \vee \theta)) \wedge ((\neg \varphi \vee \neg \psi) \wedge \neg \theta)) \\
+    & \equiv (((\psi \vee \theta) \wedge (\varphi \vee \theta)) \wedge ((\neg \varphi \wedge \neg \theta) \vee (\neg \psi \wedge \neg \theta))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((\varphi \vee \theta) \wedge ((\neg \varphi \wedge \neg \theta) \vee (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (((\varphi \vee \theta) \wedge (\neg \varphi \wedge \neg \theta)) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((((\varphi \vee \theta) \wedge \neg \varphi) \wedge \neg \theta) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((((\varphi \wedge \neg \varphi) \vee (\theta \wedge \neg \varphi)) \wedge \neg \theta) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (((0 \vee (\theta \wedge \neg \varphi)) \wedge \neg \theta) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (((\theta \wedge \neg \varphi) \wedge \neg \theta) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (((\theta \wedge \neg \theta) \wedge \neg \varphi) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((0 \wedge \neg \varphi) \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (0 \vee ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((\varphi \vee \theta) \wedge (\neg \psi \wedge \neg \theta))) \\
+    & \equiv ((\psi \vee \theta) \wedge ((\varphi \wedge (\neg \psi \wedge \neg \theta)) \vee (\theta \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv ((\psi \vee \theta) \wedge (\varphi \wedge (\neg \psi \wedge \neg \theta))) \\
+    & \equiv ((\psi \wedge (\varphi \wedge (\neg \psi \wedge \neg \theta))) \vee (\theta \wedge (\varphi \wedge (\neg \psi \wedge \neg \theta)))) \\
+    & \equiv (0 \vee 0) \\
+    & \equiv 0
+\end{align}
+
+\begin{enumerate} 
+  \item Konditionalelimination \& 2. Ersetzungslemma
+  \item Doppelte Negation \& 2. Ersetzungslemma
+  \item De Morgan \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Absorption \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Absorption \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item Tertium non datur \& 2. Ersetzungslemma
+  \item Neutrales Element \& 2. Ersetzungslemma
+  \item Assoziativität \& 2. Ersetzungslemma
+  \item Tertium non datur \& 2. Ersetzungslemma
+  \item Größtes und kleinstes Element \& 2. Ersetzungslemma
+  \item Neutrales Element \& 2. Ersetzungslemma
+  \item Distributivität \& 2. Ersetzungslemma
+  \item analog wie 17 - 20
+  \item Distributivität \& 2. Ersetzungslemma
+  \item 2mal analog zu 17 - 20
+\end{enumerate}
 
 \end{document}
