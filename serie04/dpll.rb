@@ -1,12 +1,8 @@
 puts "DPLL in Ruby..."
 
-
-
 class DPLL
   
   attr_accessor :formula
-  @@round = 0
-  
   def initialize(formula)
     self.formula = formula
   end
@@ -14,8 +10,7 @@ class DPLL
   def solve
     mappings = {}
     variables(formula).each{|variable| mappings[variable] = nil}
-#    solve_iter(clone_formula(formula), mappings)
-    solve_iter(clone_formula(formula), {})
+    solve_iter(clone_formula(formula), mappings)
   end
   
   def clone_formula(formula)
@@ -27,8 +22,6 @@ class DPLL
   end
   
   def solve_iter(formula, mappings)
-    puts "round: #{@@round}"
-    @@round +=  1
     return false if contains_empty_clause?(formula)
     return "Solution found: #{mappings.inspect}" if formula.empty?
     remove_unit_clauses(formula, mappings)
@@ -42,7 +35,6 @@ class DPLL
       if result
         return result
       else
-        puts "else-case"
         try = clone_formula(formula)
         try_mappings = mappings.clone 
         try_mappings[variable] = false
@@ -85,7 +77,7 @@ class DPLL
   end
 end
 
-#puts DPLL.new([[1 -2],[2,-3,4], [1, -4],[5,6],[7,-9],[5,8,9]]).solve
+puts DPLL.new([[1 -2],[2,-3,4], [1, -4],[5,6],[7,-9],[5,8,9]]).solve
 
 sudoku = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
 [10, 11, 12, 13, 14, 15, 16, 17, 18],
