@@ -1,6 +1,7 @@
 #lang scheme
 
 (require "formula.scm")
+(require "dimacs.scm")
 
 (define (sudoku-var i j k ) (+ (* i 100) (* j 10) k))
 
@@ -43,3 +44,18 @@
   (list 0 5 0  1 0 0  0 0 0)
   (list 0 0 0  8 0 6  0 0 0)
 ))
+
+(define (clist->formula clauses)
+  (let ((m (map (lambda (clause) 
+         (let ((c (map cmake-variable clause)))
+           (cond
+             ((> (length c) 1) (foldr make-disjunction (car c) (cdr c)))
+             (else (car c))
+             )
+           )) 
+       clauses)))
+    (foldr make-conjunction (car m) (cdr m))))
+
+(define (cmake-variable index)
+  (cond ((< index 0) (make-negation (make-variable (* -1 index))))
+        (else (make-variable index))))
