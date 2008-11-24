@@ -22,6 +22,29 @@
 \date{\today}
 \begin{document}
 
+\section*{4.3}
+Modellierung des Dominoproblems mit Hilfe der Erfüllbarkeit einer aussagenlogischer Formelmenge
+mit Variablen der Form $X_{ij}^f$:
+
+\paragraph{Die Stelle $(i, j)$ der Parkettierung ist besetzt:}
+\[
+\varphi_{ij}^S = \bigwedge_{f,g\in S: f \neq g} \left( X_{ij}^f \leftrightarrow \neg X_{ij}^g \right)
+\]
+
+\paragraph{Alle Teile um $(i, j)$ passen:}
+\begin{align*}
+\psi_{ij}^S &= \bigvee_{f\in S} \Big( X_{ij}^f\\
+&\wedge \bigvee_{g\in S:f(0) = g(2)} X_{(i+1)j}^g\\
+&\wedge \bigvee_{g\in S:f(1) = g(3)} X_{i(j+1)}^g\\
+&\wedge \bigvee_{g\in S:f(2) = g(0) \dot \wedge i>0} X_{(i-1)j}^g\\
+&\wedge \bigvee_{g\in S:f(3) = g(1), j>0} X_{i(j-1)}^g \Big)
+\end{align*}
+
+\paragraph{Parkettierung korrekt:}
+\[
+\Phi^S = \bigwedge_{0<i,0<j}\lbrace \varphi_{ij}^S \wedge \psi_{ij}^S \rbrace
+\]
+
 \section*{4.4}
 \subsection*{Voraussetzung:}
 
