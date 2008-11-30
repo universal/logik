@@ -2,6 +2,7 @@ puts "DPLL in Ruby..."
 
 class DPLL
   
+  @@iter = 1
   attr_accessor :formula
   def initialize(formula)
     self.formula = formula
@@ -9,7 +10,7 @@ class DPLL
 
   def solve
     mappings = {}
-    variables(formula).each{|variable| mappings[variable] = nil}
+#    variables(formula).each{|variable| mappings[variable] = nil}
     solve_iter(clone_formula(formula), mappings)
   end
   
@@ -22,6 +23,8 @@ class DPLL
   end
   
   def solve_iter(formula, mappings)
+    puts "#{@@iter} -- #{mappings.keys.size}"
+    @@iter += 1
     return false if contains_empty_clause?(formula)
     return "Solution found: #{mappings.inspect}" if formula.empty?
     remove_unit_clauses(formula, mappings)
@@ -39,7 +42,8 @@ class DPLL
         try_mappings = mappings.clone 
         try_mappings[variable] = false
         propagate_variable(variable, try, try_mappings)
-        return solve_iter(try, try_mappings)
+        result =  solve_iter(try, try_mappings)
+        return result if result
       end
     end
     solve_iter(formula, mappings)
@@ -77,7 +81,7 @@ class DPLL
   end
 end
 
-puts DPLL.new([[1 -2],[2,-3,4], [1, -4],[5,6],[7,-9],[5,8,9]]).solve
+puts DPLL.new([[1,-2], [2,-3,4], [1,-4], [5,6], [7,-9], [5,8,9]]).solve
 
 sudoku = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
 [10, 11, 12, 13, 14, 15, 16, 17, 18],
@@ -3336,6 +3340,5 @@ sudoku = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
 [595],
 [683],
 [699]]
-
+ 
 puts DPLL.new(sudoku).solve
-

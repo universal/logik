@@ -22,6 +22,29 @@
 \date{\today}
 \begin{document}
 
+\section*{5.3}
+
+\textbf{Voraussetzung:}\\ 
+Seien $\phi \subseteq F_{AL}$ und $\varphi, \psi \in F_{AL}$
+
+\noindent
+\textbf{Behauptung:}\\ 
+
+$\psi \models \varphi$ und $\psi \models \psi \Leftrightarrow \psi \models \varphi \wedge \psi$
+
+\noindent
+\textbf{Beweis:}\\
+"$\Rightarrow$"
+
+Es gelte $\psi \models \varphi$ und $\psi \models \psi$. Sei nun $\beta$ eine Belegung die zu $\psi$ und ...
+
+\noindent
+"$\Leftarrow$"
+
+Es gelte $\psi \models \varphi \wedge \psi$.
+
+
+
 \section*{5.4}
 
 \textbf{Behauptung:}\\ Die Formel $\varphi = \bigwedge \bigvee\{\{X_1, X_2, \neg X_3\},\{X_3, \neg X_4, X_5\},\{\neg X_1, X_2, \neg X_4\}, \{\neg X_2\},\{\neg X_5\},\{X_2, X_4\}\}$ unerfüllbar.
@@ -30,16 +53,16 @@
 \textbf{Beweis: }
 
 \begin{align}
-  & \{X_1, X_2, \neg X_3\} & (A)\\
-  & \{X_3, \neg X_4\, X_5\} & (A)\\
+  & \{X_1, X_2, \neg X_3\} & (V)\\
+  & \{X_3, \neg X_4\, X_5\} & (V)\\
   & \{X_1, X_2, \neg X_4\, X_5\} & (R) & auf 1 + 2\\
-  & \{\neg X_1, X_2, \neg X_4\} & (A)\\
+  & \{\neg X_1, X_2, \neg X_4\} & (V)\\
   & \{X_2, \neg X_4, X_5\} & (R) & auf 3 + 4\\
-  & \{X_2, X_4\} & (A)\\
+  & \{X_2, X_4\} & (V)\\
   & \{X_2, X_5\} & (R) & auf 5 + 6\\
-  & \{\neg X_2\} & (A)\\
+  & \{\neg X_2\} & (V)\\
   & \{X_5\} & (R) & auf 7 + 8\\
-  & \{\neg X_5\} & (A)\\
+  & \{\neg X_5\} & (V)\\
   & \{\} & (R) & auf 9 + 10
 \end{align}
 
