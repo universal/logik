@@ -25,25 +25,41 @@
 \section*{5.3}
 
 \textbf{Voraussetzung:}\\ 
-Seien $\phi \subseteq F_{AL}$ und $\varphi, \psi \in F_{AL}$
+Seien $\Phi \subseteq F_{AL}$ und $\varphi, \psi \in F_{AL}$
 
 \noindent
 \textbf{Behauptung:}\\ 
 
-$\psi \models \varphi$ und $\psi \models \psi \Leftrightarrow \psi \models \varphi \wedge \psi$
+$\Phi \models \varphi$ und $\Phi \models \psi$ gdw. $\Phi \models \varphi \wedge \psi$
 
 \noindent
 \textbf{Beweis:}\\
 "$\Rightarrow$"
 
-Es gelte $\psi \models \varphi$ und $\psi \models \psi$. Sei nun $\beta$ eine Belegung die zu $\psi$ und ...
+Es gelte $\Phi \models \varphi$ und $\Phi \models \psi$. Sei $\beta$ eine Belegung die zu
+$\Phi$, $\varphi$ und $\psi$ passt und gelte $\beta \models \Phi$. Dann gilt auch
+$\beta \models \varphi$ und $\beta \models \psi$ nach Annahme. Nach Definition der
+Erfüllbarkeit gilt $\llbracket \varphi \rrbracket^\beta = 1$ und
+$\llbracket \psi \rrbracket^\beta = 1$, somit auch
+$\llbracket \varphi \wedge \psi \rrbracket^\beta = 1$. Daraus folgt wieder
+$\beta \models \varphi \wedge \psi$ und deshalb auch $\Phi \models \varphi \wedge \psi$,
+da $\beta \models \Phi$ angenommen.
+\\
 
 \noindent
 "$\Leftarrow$"
 
-Es gelte $\psi \models \varphi \wedge \psi$.
+Es gelte $\Phi \models \varphi \wedge \psi$. Sei $\beta$ eine Belegung die zu
+$\Phi$, $\varphi$ und $\psi$ passt und gelte $\beta \models \Phi$. Dann gilt auch
+$\beta \models \varphi \wedge \psi$ nach Annahme. Nach Definition gilt
+dann $\llbracket \varphi \wedge \psi \rrbracket^\beta = 1$. Somit gilt auch
+$\llbracket \varphi \rrbracket^\beta = 1$ und
+$\llbracket \psi \rrbracket^\beta = 1$. Das heißt $\beta \models \varphi$ und $\beta \models \psi$.
+Daraus folgt nach Annahme von $\beta \models \Phi$, dass
+$\Phi \models \varphi$ und $\Phi \models \varphi$.
 
-
+\noindent
+Somit gilt die Behauptung.
 
 \section*{5.4}
 
