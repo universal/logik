@@ -35,6 +35,15 @@ $\text{Wenn } \Phi \vdash_H \varphi \text{ gilt, dann gilt }\Phi \models \varphi
 \textbf{Beweis:}\\
 Es gelte $\Phi \vdash_H \varphi$.
 
+Wir beweisen die Aussage über eine Fallunterscheidung:
+
+\begin{enumerate}
+  \item[Vorraussetzung] 
+  Also ist $\varphi \in \Phi$. Sei $\beta$ eine Belegung die zu $\Phi$ passt, daraus folgt dann $\beta(\varphi)=1$ und somit $\Phi \models \varphi$
+  \item[Axiom] Ist $\varphi$ in der Form eines Axioms, so gilt $\models \varphi$ und somit auch $\Phi \models \varphi$.
+  \item[Modus Ponens] Es gelte: $\phi \vdash_H \psi$ und $\Phi \vdash_H \psi \rightarrow \varphi$. Somit lässt sich $\varphi$ per MP schließen....
+\end{enumerate}
+
 \noindent
 Somit gilt die Behauptung.
 
