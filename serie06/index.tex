@@ -22,30 +22,38 @@
 \date{\today}
 \begin{document}
 
-\section*{6.3}
-\noindent
-\textbf{Voraussetzung:}\\
-Seien $\Phi \subseteq F[\neg, \rightarrow]_{AL}$ und $\varphi \in F[\neg, \rightarrow]_{AL}$
+	\section*{6.3}
+	\noindent
+	\textbf{Voraussetzung:}\\
+	Seien $\Phi \subseteq F[\neg, \rightarrow]_{AL}$ und $\varphi \in F[\neg, \rightarrow]_{AL}$
 
-\noindent
-\textbf{Behauptung:}\\ 
-$\text{Wenn } \Phi \vdash_H \varphi \text{ gilt, dann gilt }\Phi \models \varphi$.
+	\noindent
+	\textbf{Behauptung:}\\ 
+	Wenn $\Phi \vdash_H \varphi$ gilt, dann gilt $\Phi \models \varphi$.
 
-\noindent
-\textbf{Beweis:}\\
-Es gelte $\Phi \vdash_H \varphi$.
+	\noindent
+	\textbf{Beweis:}\\
+	Es gelte $\Phi \vdash_H \varphi$. Es gibt also eine Folge von Formeln $\varphi_0, \cdots , \varphi_{n-1} \in F[\neg, \rightarrow]_{AL}$ für die jeweils eine der drei Bedingungen "Voraussetzung", "Modus Ponens" oder "Axiom" gilt.
 
-Wir beweisen die Aussage über eine Fallunterscheidung:
+	Beweis per Induktion:
+	Induktionsanfang "n=1":
+	Es gibt nur eine Formel $\varphi_0 = \varphi$ im Hilbert-Beweis, die entweder eine Voraussetzung ist, d.h. $\varphi_0 \in \Phi$, oder durch ein Axiom gebildet wurde.
+	1. Fall Voraussetzung:
+	$\varphi \in \Phi$, also gilt offensichtlich $\Phi \models \varphi$.
+	2. Fall Axiom
+	Nach Lemma 2.17 gilt $\models \varphi$. Also gilt auch $\Phi \models \varphi$.
 
-\begin{enumerate}
-  \item[Vorraussetzung] 
-  Also ist $\varphi \in \Phi$. Sei $\beta$ eine Belegung die zu $\Phi$ passt, daraus folgt dann $\beta(\varphi)=1$ und somit $\Phi \models \varphi$
-  \item[Axiom] Ist $\varphi$ in der Form eines Axioms, so gilt $\models \varphi$ und somit auch $\Phi \models \varphi$.
-  \item[Modus Ponens] Es gelte: $\phi \vdash_H \psi$ und $\Phi \vdash_H \psi \rightarrow \varphi$. Somit lässt sich $\varphi$ per MP schließen....
-\end{enumerate}
+	Induktionsschritt:
+	Es gelte $\Phi \models \varphi_{n-2}$ nach Induktionsvoraussetzung. Betrachte die letzte Formel $\varphi_{n-1}$, die entweder durch Voraussetzung, Modus Ponens oder ein Axiom gebildet wurde.
+	1. Fall Voraussetzung:
+	Dann gilt $\varphi_{n-1} \in \Psi$, daraus folgt $\Phi \models \varphi_{n-1}$.
+	2. Fall Modus Ponens:
+	Es gibt $j,k < n-1$ derart, dass $\varphi_k = \varphi_j \rightarrow \varphi_{n-1}$ gilt. Es gilt nach Induktionsvoraussetzung, dass $\Phi \models \varphi_j$ und $\Phi \models \varphi_k$. Nach Lemma 2.18 gilt ${\varphi_j, \varphi_k} \models \varphi_{n-1}$ und somit auch $\Phi \models \varphi_{n-1}$.
+	3. Fall Axiom:
+	Nach Lemma 2.17 gilt $\models \varphi_{n-1}$, also gilt auch $\Phi \models \varphi_{n-1}$.
 
-\noindent
-Somit gilt die Behauptung.
+	\noindent
+	Somit gilt die Behauptung.
 
 \section*{6.4}
 
