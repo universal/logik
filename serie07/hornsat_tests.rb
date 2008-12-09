@@ -11,12 +11,10 @@ class HornsatTests < Test::Unit::TestCase
     end
   end
 
-  def test_clauses_input_fails_for_target_clause
+  def test_clauses_input_accepts_target_clause
     clauses = [[-1, -2]]
     hornsat = Hornsat.new
-    assert_throws :target_clause_given do
-    	hornsat.solve(clauses)
-    end
+   	hornsat.solve(clauses)
   end
 
   def test_clauses_input_fails_for_empty_clauses
@@ -27,18 +25,24 @@ class HornsatTests < Test::Unit::TestCase
     end
   end
 
-  def test_clauses_input_fails_for_empty_clause
+  def test_clauses_input_accepts_empty_clause
     clauses = [[]]
     hornsat = Hornsat.new
-    assert_throws :empty_clause_given do
-      hornsat.solve(clauses)
-    end
+    hornsat.solve(clauses)
   end
 
   def test_hornsat_input_fails_for_non_fixnum
     clauses = ["a", [47, []]]
     hornsat = Hornsat.new
     assert_throws :illegal_clauses do
+      hornsat.solve(clauses)
+    end
+  end
+
+  def test_clauses_input_fails_for_zero
+    clauses = [[0]]
+    hornsat = Hornsat.new
+    assert_throws :zero_variable_index do
       hornsat.solve(clauses)
     end
   end
@@ -50,8 +54,16 @@ class HornsatTests < Test::Unit::TestCase
   end
 
   def test_hornsat_solves_clauses
-    clauses = [[-1, -2, 3], [2], [1, -2]]
+    clauses = [[1], [3], [-1, -3, 5], [-1, -5, 7], [-2, 1]]
     hornsat = Hornsat.new
-    assert_equal([1, 2, 3], hornsat.solve(clauses).sort)
+    output = hornsat.solve(clauses)
+    assert(output.is_a?(Array), "Solve should return a result")
+    assert_equal([1, 3, 5, 7], output.sort)
+  end
+
+  def test_hornsat_finds_unsaturable
+    clauses = [[2], [-2]]
+    hornsat = Hornsat.new
+    assert_equal(false, hornsat.solve(clauses))
   end
 end
