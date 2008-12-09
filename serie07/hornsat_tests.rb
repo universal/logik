@@ -14,7 +14,9 @@ class HornsatTests < Test::Unit::TestCase
   def test_clauses_input_fails_for_target_clause
     clauses = [[-1, -2]]
     hornsat = Hornsat.new
-    assert_equal(false, hornsat.solve(clauses))
+    assert_throws :target_clause_given do
+    	hornsat.solve(clauses)
+    end
   end
 
   def test_clauses_input_fails_for_empty_clauses
@@ -28,7 +30,17 @@ class HornsatTests < Test::Unit::TestCase
   def test_clauses_input_fails_for_empty_clause
     clauses = [[]]
     hornsat = Hornsat.new
-    assert_equal(false, hornsat.solve(clauses))
+    assert_throws :empty_clause_given do
+      hornsat.solve(clauses)
+    end
+  end
+
+  def test_hornsat_input_fails_for_non_fixnum
+    clauses = ["a", [47, []]]
+    hornsat = Hornsat.new
+    assert_throws :illegal_clauses do
+      hornsat.solve(clauses)
+    end
   end
 
   def test_clauses_input_accepts_fact_clause
@@ -36,7 +48,6 @@ class HornsatTests < Test::Unit::TestCase
     hornsat = Hornsat.new
     assert_equal([47], hornsat.solve(clauses))
   end
-
 
   def test_hornsat_solves_clauses
     clauses = [[-1, -2, 3], [2], [1, -2]]
