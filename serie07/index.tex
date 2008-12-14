@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage{ifpdf}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{stmaryrd}
+
+\pagestyle{fancy}
+\fancyhead{}
+\fancyfoot{}
+\fancyhead[LO,LE]{Johannes Hedtrich, Christopher Hlubek}
+\fancyhead[RO,RE]{Serie 07}
+\fancyfoot[CO,CE]{\thepage}
+
+\title{Serie 07}
+\author{Johannes Hedtrich, Christopher Hlubek}
+\date{\today}
+\begin{document}
+
+  \section*{7.3}
+  \noindent
+  \textbf{Voraussetzung:}\\
+  
+  Es gelte $\{X_1 \rightarrow (X_2 \rightarrow X_3), X_1 \rightarrow X_2, \neg \neg X_1\}$
+
+  \noindent
+  \textbf{Behauptung:}\\ 
+  
+  $\{X_1 \rightarrow (X_2 \rightarrow X_3), X_1 \rightarrow X_2, \neg \neg X_1\} \vdash_H X_3$
+
+  \noindent
+  \textbf{Beweis:}\\
+  
+  \begin{align}
+    & \neg \neg X_1 & (V)\\
+    & X_1 & Definition &\\
+    & X_1 \rightarrow X_2 & (V)\\
+    & X_2 & (MP) \text{ auf 2+3}\\
+    & X_1 \rightarrow (X_2 \rightarrow X_3) & (V)\\
+    & X_2 \rightarrow X_3 & (MP) \text{ auf 2+5}\\
+    & X_3 & (MP) \text{ auf 4+6}
+  \end{align}
+
+\end{document}

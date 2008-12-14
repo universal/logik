@@ -7,21 +7,21 @@ class HornsatTests < Test::Unit::TestCase
     clauses = [[-1, -2, -3, 4], [-1, -2, -3, 4], [1, 2]]
     hornsat = Hornsat.new
     assert_throws :no_horn_clause do
-    	hornsat.solve(clauses)
+      hornsat.solve(clauses)
     end
   end
 
   def test_clauses_input_accepts_target_clause
     clauses = [[-1, -2]]
     hornsat = Hornsat.new
-   	hornsat.solve(clauses)
+     hornsat.solve(clauses)
   end
 
   def test_clauses_input_fails_for_empty_clauses
     clauses = []
     hornsat = Hornsat.new
     assert_throws :empty_clauses do
-    	hornsat.solve(clauses)
+      hornsat.solve(clauses)
     end
   end
 

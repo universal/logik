@@ -5,7 +5,7 @@ class Hornsat
       throw :empty_clauses
     end
 
-	validate(clauses) if validate_input
+    validate(clauses) if validate_input
     
     l = []
     # Clone clauses to M
@@ -29,18 +29,18 @@ class Hornsat
   
 private
   def validate(clauses)
-	# Check for valid clauses format and invalid clauses as input for HornSAT
-	clauses.each do |c|
-	  throw :illegal_clauses unless c.is_a? Array
-	  positive_literals = c.select {|v| v > 0}.length
-	  # Check for non horn clauses
-	  if positive_literals > 1
-		throw :no_horn_clause
-	  end
-	  c.each do |v|
-		throw :illegal_clauses unless v.is_a? Fixnum
-		throw :zero_variable_index if v == 0
-	  end
+  # Check for valid clauses format and invalid clauses as input for HornSAT
+  clauses.each do |c|
+    throw :illegal_clauses unless c.is_a? Array
+    positive_literals = c.select {|v| v > 0}.length
+    # Check for non horn clauses
+    if positive_literals > 1
+    throw :no_horn_clause
+    end
+    c.each do |v|
+    throw :illegal_clauses unless v.is_a? Fixnum
+    throw :zero_variable_index if v == 0
+    end
     end
   end
 end
