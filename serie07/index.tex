@@ -9,6 +9,25 @@
 \usepackage{color}
 \usepackage{pdfpages}
 \usepackage{stmaryrd}
+\usepackage{listings}
+\lstset{
+language=Ruby,%
+numbers=left,%
+numberstyle=\footnotesize,%
+stepnumber=1,%
+numbersep=5pt,%
+backgroundcolor=\color{white},%
+showspaces=false,%
+showstringspaces=false,%
+showtabs=false,%
+frame=single,%
+tabsize=2,%
+captionpos=b,%
+breaklines=true,%
+breakatwhitespace=false,%
+morecomment=[l]{//}
+}
+
 
 \pagestyle{fancy}
 \fancyhead{}
@@ -38,12 +57,19 @@
   
   \begin{align}
     & \neg \neg X_1 & (V)\\
-    & X_1 & Definition &\\
+    & X_1 & ?? &\\
     & X_1 \rightarrow X_2 & (V)\\
     & X_2 & (MP) \text{ auf 2+3}\\
     & X_1 \rightarrow (X_2 \rightarrow X_3) & (V)\\
     & X_2 \rightarrow X_3 & (MP) \text{ auf 2+5}\\
     & X_3 & (MP) \text{ auf 4+6}
   \end{align}
+  
+  \section*{7.4}
+  \noindent
+  \textbf{Code:}\\
+  \lstinputlisting{hornsat_tests.rb}
+
+  \lstinputlisting{hornsat.rb}
 
 \end{document}
