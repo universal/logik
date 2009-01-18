@@ -58,7 +58,7 @@ morecomment=[l]{//}
   Beweis durch vollständige Induktion über den Termaufbau.\\
   \\
   Induktionsanfang:\\
-  Ist $t = x_i$, so gilt:
+  Ist $t = x_i$, mit $i \in \mathbb{N}$ so gilt:
   
   \begin{align*}
   \llbracket t \rrbracket^{\beta}_{\textbf{S}} &= \llbracket x_i \rrbracket^{\beta}_{\textbf{S}}\\
@@ -91,6 +91,17 @@ morecomment=[l]{//}
   \noindent
   \textbf{(a)}\\
   
-  asd\\
+  \textbf{Eval}$(\varphi, n, S)$\\
+  $...$\\
+  if $\varphi = \neg \psi$ then return $S^n \backslash \textbf{Eval}(\psi, n, \textbf{S})$\\
+  $...$\\
   \textbf{(b)}\\
+  
+  \textbf{Eval}$(\varphi, n, S)$\\
+  $...$\\
+  if $\varphi = \forall x_i \psi$ then\\
+    
+  endif\\
+  $...$\\
+  
 \end{document}
