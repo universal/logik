@@ -56,12 +56,37 @@ morecomment=[l]{//}
   \textbf{Beweis:}\\
   
   Beweis durch vollständige Induktion über den Termaufbau.\\
+  \\
   Induktionsanfang:\\
-  Ist $t = x_i$, so gilt: $[t]^{\beta}_{\textbf{S}} = [x_i]^{\beta}_{\textbf{S}} = \beta(x_i) = \beta'(x_i) = [x_i]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
-  Ist $t = c$, mit $c \in \Sigma$, so gilt: $[t]^{\beta}_{\textbf{S}} = [c]^{\beta}_{\textbf{S}} = \beta(c) = c^{\textbf{S}}= \beta'(c) = [c]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
+  Ist $t = x_i$, so gilt:
+  
+  \begin{align*}
+  \llbracket t \rrbracket^{\beta}_{\textbf{S}} &= \llbracket x_i \rrbracket^{\beta}_{\textbf{S}}\\
+                                               &= \beta(x_i) &\text{nach Def. der Interpretation}\\
+                                               &= \beta'(x_i) &\text{da $x_i \in \text{vars}(t)$}\\
+                                               &= \llbracket x_i \rrbracket^{\beta'}_{\textbf{S}} &\text{Def. Interpretation}\\
+                                               &= \llbracket t \rrbracket^{\beta'}_{\textbf{S}}
+  \end{align*}
+  
+  
+  Ist $t = c$, mit $c \in \Sigma$, so gilt:
+  
+  \begin{align*}  
+  \llbracket t \rrbracket^{\beta}_{\textbf{S}} &= \llbracket c \rrbracket^{\beta}_{\textbf{S}}\\
+                                                &= c^{\textbf{S}} & \text{nach Def. der Interpretation}\\
+                                                &= \llbracket c \rrbracket^{\beta'}_{\textbf{S}}\\
+                                                &= \llbracket t \rrbracket^{\beta'}_{\textbf{S}}
+  \end{align*}
+  
   Induktionsschluss:\\
-  Ist $t = f(t_0, ...,t_{n-1})$ mit $f // n \in \Sigma$ und sind $t_0, ..., t_{n-1} \Sigma$-Terme, so gilt:\\
-  $[t]^{\beta}_{\textbf{S}} = [f(t_0, ...,t_{n-1})]^{\beta}_{\textbf{S}} = f^{\textbf{S}}([t_0]^{\beta}_{\textbf{S}}, ...,[t_{n-1}]^{\beta}_{\textbf{S}} = f^{\textbf{S}}([t_0]^{\beta'}_{\textbf{S}}, ...,[t_{n-1}]^{\beta'}_{\textbf{S}}) = [f(t_0, ...,t_{n-1})]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
+  Ist $t = f(t_0, ...,t_{n-1})$ mit $f // n \in \Sigma$ und sind $t_0, ..., t_{n-1}$ $\Sigma$-Terme, so gilt:\\
+  \begin{align*}
+  \llbracket t \rrbracket^{\beta}_{\textbf{S}} &= \llbracket f(t_0, ...,t_{n-1}) \rrbracket^{\beta}_{\textbf{S}}\\
+                                               &= f^{\textbf{S}}(\llbracket t_0 \rrbracket^{\beta}_{\textbf{S}}, ...,\llbracket t_{n-1} \rrbracket^{\beta}_{\textbf{S}} &\text{Def. Interpretation}\\
+                                               &= f^{\textbf{S}}(\llbracket t_0 \rrbracket^{\beta'}_{\textbf{S}}, ...,\llbracket t_{n-1} \rrbracket^{\beta'}_{\textbf{S}}) &\text{nach IV}\\
+                                               &= \llbracket f(t_0, ...,t_{n-1}) \rrbracket^{\beta'}_{\textbf{S}} &\text{Def. Interpretation}\\
+                                               &= \llbracket t\rrbracket^{\beta'}_{\textbf{S}}
+  \end{align*}  
   \section*{9.4}
   \noindent
   \textbf{(a)}\\
