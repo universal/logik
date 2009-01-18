@@ -56,6 +56,12 @@ morecomment=[l]{//}
   \textbf{Beweis:}\\
   
   Beweis durch vollständige Induktion über den Termaufbau.\\
+  Induktionsanfang:\\
+  Ist $t = x_i$, so gilt: $[t]^{\beta}_{\textbf{S}} = [x_i]^{\beta}_{\textbf{S}} = \beta(x_i) = \beta'(x_i) = [x_i]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
+  Ist $t = c$, mit $c \in \Sigma$, so gilt: $[t]^{\beta}_{\textbf{S}} = [c]^{\beta}_{\textbf{S}} = \beta(c) = c^{\textbf{S}}= \beta'(c) = [c]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
+  Induktionsschluss:\\
+  Ist $t = f(t_0, ...,t_{n-1})$ mit $f // n \in \Sigma$ und sind $t_0, ..., t_{n-1} \Sigma$-Terme, so gilt:\\
+  $[t]^{\beta}_{\textbf{S}} = [f(t_0, ...,t_{n-1})]^{\beta}_{\textbf{S}} = f^{\textbf{S}}([t_0]^{\beta}_{\textbf{S}}, ...,[t_{n-1}]^{\beta}_{\textbf{S}} = f^{\textbf{S}}([t_0]^{\beta'}_{\textbf{S}}, ...,[t_{n-1}]^{\beta'}_{\textbf{S}}) = [f(t_0, ...,t_{n-1})]^{\beta'}_{\textbf{S}} = [t]^{\beta'}_{\textbf{S}}$.\\
   \section*{9.4}
   \noindent
   \textbf{(a)}\\
