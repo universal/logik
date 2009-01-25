@@ -42,4 +42,24 @@ morecomment=[l]{//}
   \section*{10.3}
   \lstinputlisting{eval_formula.pseudo}
   \section*{10.4}
+  
+  \subsection*{(b)}
+    \begin{align*}
+      & PNF(\varphi) = PNF(R(x_0) \wedge \neg \exists x_0 Q(x_0, x_1))\\
+      &= KonjPNF(PNF(R(x_0)), PNF(\neg \exists x_0 Q(x_0, x_1)))\\
+      &= KonjPNF(R(x_0), NegPNF(\exists x_0 Q(x_0, x_1)))\\
+      &= KonjPNF(R(x_0), \forall x_0 NegPNF(Q(x_0, x_1)))\\
+      &= KonjPNF(R(x_0), \forall x_0 \neg Q(x_0, x_1))\\
+      &= KonjPNF(\forall x_0 \neg Q(x_0, x_1), R(x_0))\\
+      &= \forall x_2 KonjPNF(\neg Q(x_2, x_1), R(x_0))\\
+      &= \forall x_2 (\neg Q(x_2, x_1) \wedge R(x_0))\\
+  \end{align*}
+
+  \begin{align*}
+      & PNF(\varphi) = PNF(\neg \forall x_0 R(x_0) \wedge \forall x_0 P(x_0))\\
+      &= KonjPNF(PNF(\neg \forall x_0 R(x_0)), PNF(\forall x_0 P(x_0)))\\
+      &= KonjPNF(NegPNF(\forall x_0 R(x_0)), \forall x_0 PNF(P(x_0)))\\
+      &= KonjPNF(NegPNF(\forall x_0 R(x_0)), \forall x_0 P(x_0))\\
+  \end{align*}
+  
 \end{document}
