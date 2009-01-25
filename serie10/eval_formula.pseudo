@@ -1,0 +1,43 @@
+def eval_formula(formula, beta)
+  if formula.atomic?
+    eval_atomic_formula(formula, beta)
+  else
+    eval_induction_formula(formula, beta)
+  end
+end
+
+def eval_atomic_formula(formula, beta)
+  if formula == 1
+    return true
+  elsif formula == 0
+    return false
+  elsif formula.term_equality?
+    return eval_term(formula.left, beta) == eval_term(formula.right, beta)
+  elsif formula.relation?
+    eval_relation(formula, beta)
+  end
+end
+
+def eval_induction_formula(formula, beta)
+  if formula.negation?
+    return not eval_formula(formula, beta)
+  elsif formula.combination?
+    return formula.combinator(eval_formula(formula.left), eval_formula(formula.right))
+  elsif formula.existence?
+    return t_s.any?{|element| eval_formula(formula.phi, substitute(beta, formula.quantified_variable, element))}
+  elsif formula.for_all?
+    return t_s.all?{|element| eval_formula(formula.phi, substitute(beta, formula.quantified_variable, element))}
+  end
+end
+
+def eval_term(term, beta)
+  interpret_term(term, beta)
+end
+
+def interpret_term(term, beta)
+  beta(term)
+end
+
+def eval_relation(relation, beta)
+  r_s.contains? relation.terms.map{|term| interpret_term(term, beta)}
+end
