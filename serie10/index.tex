@@ -59,7 +59,12 @@ morecomment=[l]{//}
       & PNF(\varphi) = PNF(\neg \forall x_0 R(x_0) \wedge \forall x_0 P(x_0))\\
       &= KonjPNF(PNF(\neg \forall x_0 R(x_0)), PNF(\forall x_0 P(x_0)))\\
       &= KonjPNF(NegPNF(\forall x_0 R(x_0)), \forall x_0 PNF(P(x_0)))\\
-      &= KonjPNF(NegPNF(\forall x_0 R(x_0)), \forall x_0 P(x_0))\\
+      &= KonjPNF(\exists x_0 NegPNF(R(x_0)), \forall x_0 P(x_0))\\
+      &= KonjPNF(\exists x_0 \neg R(x_0), \forall x_0 P(x_0))\\
+      &= \exists x_1 KonjPNF(\neg R(x_1), \forall x_0 P(x_0))\\
+      &= \exists x_1 KonjPNF(\forall x_0 P(x_0), \neg R(x_1))\\
+      &= \exists x_1 \forall x_2 KonjPNF(P(x_2), \neg R(x_1))\\
+      &= \exists x_1 \forall x_2 (P(x_2) \wedge \neg R(x_1))\\
   \end{align*}
   
 \end{document}
