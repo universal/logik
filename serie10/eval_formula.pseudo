@@ -31,12 +31,9 @@ def eval_induction_formula(formula, beta)
 end
 
 def eval_term(term, beta)
-  interpret_term(term, beta)
+  term.variables.map{|x_i| beta(x_i) || x_i}
 end
 
-def interpret_term(term, beta)
-  beta(term)
-end
 
 def eval_relation(relation, beta)
   r_s.contains? relation.terms.map{|term| interpret_term(term, beta)}
