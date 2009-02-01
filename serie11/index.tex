@@ -51,8 +51,26 @@ morecomment=[l]{//}
   \section*{11.4}
   \subsection*{Vor:} Sei $\Sigma$ eine Signatur und $\varphi }in F_{PL}(\Sigma)$.
   \subsection*{Beh:} \forall x_0 \forall x_1 \varphi \equiv \forall x_1 \forall x_0 \varphi
-  \subsection*{Bew:} 
+  \subsection*{Bew:}
+  
+  Sei $I = (S, \beta)$ eine $\Sigma$-Interpretation. Es gilt $I \model \forall x_0 \forall x_1 \varphi$
+  gdw. $S,\beta\[a/x_0\]\[b/x_1\] \model \varphi$ f.a. $a, b \in S$ gilt. Da offensichtlich
+  $\beta\[a/x_0\]\[b/x_1\] = \beta\[b/x_1\]\[a/x_0\]$, gilt auch
+  $S,\beta\[b/x_1\]\[a/x_0\] \model \varphi$ f.a. $a, b \in S$ gdw. $I \model \forall x_1 \forall x_0 \varphi$.
   
   \section*{11.5}
+  
+  $\varphi_{F_1}^{(i)} = P(f_c(f_a(e)), f_b(f_a(e))) \wedge
+  P(f_a(f_b(e)), f_c(f_b(e))) \wedge
+  P(f_b(f_b(f_a(e))), f_c(f_a(e)))$
+  
+  $\varphi_{F_1}^{(ii)} = \forall x_0 \forall x_1 (P(x_0, x_1) \rightarrow
+  P(f_c(f_a(x_0)), f_b(f_a(x_1))) \wedge
+  P(f_a(f_b(x_0)), f_c(f_b(x_1))) \wedge
+  P(f_b(f_b(f_a(x_0))), f_c(f_a(x_1)))$
+  
+  $\varphi_{F_1} = \varphi_{F_1}^{(i)} \wedge \varphi_{F_1}^{(ii)} \rightarrow
+  \exists x_0 P(x_0, x_0)$
+  
   
 \end{document}
