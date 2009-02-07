@@ -1,0 +1,49 @@
+\documentclass[12pt,a4paper]{scrartcl}
+\usepackage{ifpdf}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{pdfpages}
+\usepackage{stmaryrd}
+\usepackage{listings}
+\lstset{
+language=Ruby,%
+numbers=left,%
+numberstyle=\footnotesize,%
+stepnumber=1,%
+numbersep=5pt,%
+backgroundcolor=\color{white},%
+showspaces=false,%
+showstringspaces=false,%
+showtabs=false,%
+frame=single,%
+tabsize=2,%
+captionpos=b,%
+breaklines=true,%
+breakatwhitespace=false,%
+morecomment=[l]{//}
+}
+
+
+\author{Johannes Hedtrich}
+\date{\today}
+\begin{document}
+  \section{Aussagenlogik}
+  \begin{description}
+    \item[$F_{AL}$] $0,1,X_i$ atomare Formeln\\
+            $\varphi, \psi \in F_{AL}$: $\neg \varphi$, $\varphi \wedge \psi$, $\varphi \vee \psi$, $\varphi \rightarrow \psi$, $\varphi \leftrightarrow \psi \in F_{AL}$
+    \item[$\beta: V_{AL} \dashrightarrow {0,1}$] $\beta$ passt zu $\varphi \in F_{AL}$, falls $vars(\varphi) \subseteq dom(\beta)$\\
+            $\llbracket 0 \rrbracket^{\beta} = 0, \llbracket 1 \rrbracket^{\beta} = 1, \llbracket X_i \rrbracket^{\beta} = \beta(X_i)$\\
+            $\varphi, \psi \in F_{AL} \text{und} * \in {\vee, \wedge, \rightarrow, \leftrightarrow} $: $\llbracket \neg \varphi \rrbracket^{\beta} = \overset{.}{\neg} \varphi, \llbracket(\varphi * \psi)\rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta} \overset{.}{*} \llbracket \psi \rrbracket^{\beta}$
+    \item[keine Formel ist echtes Anfangsstück einer anderen] Sind $\varphi, \psi \in F_{AL}$, so gilt $\varphi \not \sqsubset \psi$
+    \item[Eindeutige Konstruktion] blub
+    \item[$\varphi \equiv \psi$] für alle Belegungen $\beta$, die zu $\varphi, \psi$ passen gilt: $\llbracket \varphi \rrbracket^{\beta} = \llbracket \psi \rrbracket^{\beta}$
+    \item[Koinzidenzlemma] Sei $\varphi \in F_{AL}$ und seien $\beta, \beta'$ Variablenbelegungen, die zu $\varphi$ passen. Falls $\beta|_{vars(\varphi)} = \beta'|_{vars(\varphi)}$, so $\llbracket \varphi \rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta'}$
+    \item[Aussagenlogische Gesetze] blub
+    \item[Substitution $\sigma$] $\sigma: V_{AL} \dashrightarrow F_{AL}$
+  \end{description}
+\end{document}
