@@ -38,12 +38,29 @@ morecomment=[l]{//}
             $\varphi, \psi \in F_{AL}$: $\neg \varphi$, $\varphi \wedge \psi$, $\varphi \vee \psi$, $\varphi \rightarrow \psi$, $\varphi \leftrightarrow \psi \in F_{AL}$
     \item[$\beta: V_{AL} \dashrightarrow {0,1}$] $\beta$ passt zu $\varphi \in F_{AL}$, falls $vars(\varphi) \subseteq dom(\beta)$\\
             $\llbracket 0 \rrbracket^{\beta} = 0, \llbracket 1 \rrbracket^{\beta} = 1, \llbracket X_i \rrbracket^{\beta} = \beta(X_i)$\\
-            $\varphi, \psi \in F_{AL} \text{und} * \in {\vee, \wedge, \rightarrow, \leftrightarrow} $: $\llbracket \neg \varphi \rrbracket^{\beta} = \overset{.}{\neg} \varphi, \llbracket(\varphi * \psi)\rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta} \overset{.}{*} \llbracket \psi \rrbracket^{\beta}$
+            $\varphi, \psi \in F_{AL} \text{ und } * \in \{\vee, \wedge, \rightarrow, \leftrightarrow\} $: $\llbracket \neg \varphi \rrbracket^{\beta} = \overset{.}{\neg} \varphi, \llbracket(\varphi * \psi)\rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta} \overset{.}{*} \llbracket \psi \rrbracket^{\beta}$
     \item[keine Formel ist echtes Anfangsstück einer anderen] Sind $\varphi, \psi \in F_{AL}$, so gilt $\varphi \not \sqsubset \psi$
     \item[Eindeutige Konstruktion] blub
     \item[$\varphi \equiv \psi$] für alle Belegungen $\beta$, die zu $\varphi, \psi$ passen gilt: $\llbracket \varphi \rrbracket^{\beta} = \llbracket \psi \rrbracket^{\beta}$
     \item[Koinzidenzlemma] Sei $\varphi \in F_{AL}$ und seien $\beta, \beta'$ Variablenbelegungen, die zu $\varphi$ passen. Falls $\beta|_{vars(\varphi)} = \beta'|_{vars(\varphi)}$, so $\llbracket \varphi \rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta'}$
     \item[Aussagenlogische Gesetze] blub
-    \item[Substitution $\sigma$] $\sigma: V_{AL} \dashrightarrow F_{AL}$
+    \item[Substitution] $\sigma: V_{AL} \dashrightarrow F_{AL}$, induktive Definition:\\
+            $0\sigma = 0 \text{, } 1\sigma = 1 \text{, } X_i \sigma = \left\{ \begin{array}{l}X_i \text{ f.a } X_i \notin dom(\sigma)\\ \sigma(X_i) \text{ sonst}\end{array} \right.$\\
+            $\varphi, \psi \in F_{AL} \text{ und } * \in \{\vee, \wedge, \rightarrow, \leftrightarrow\} $: $(\neg \varphi)\sigma = \neg(\varphi \sigma) \text{ und } (\varphi * \psi)\sigma = (\varphi \sigma * \psi \sigma)$
+    \item[Substitutionslemma] Sei $\varphi \in F_{AL}$, $\sigma$ eine Substitution und $\beta$ eine Belegung die zu $\varphi \sigma$ passt. Dann gilt: 
+            $\llbracket \varphi \sigma \rrbracket^{\beta} = \llbracket \varphi \rrbracket^{\beta \sigma}$
+    \item[1. Ersetzungslemma] Sind $\varphi, \psi \in F_{AL} \text{ mit } \varphi \equiv \psi \text{, } \sigma \text{Substitution, so gilt: } \varphi \sigma \equiv \psi \sigma$
+    \item[2. Ersetzungslemma] Ist $\chi \in F_{AL}, X_i \in V_{AL}, \rho, \rho' \in F_{AL} \text{ mit } \rho \equiv \rho'$ Dann gilt: $\chi[\rho/\chi_i] \equiv \chi[\rho'/\chi_i]$
+    \item[Negationsnormalform] Jede aussagenlogische Formel ist äquivalent zu einer Formel in Negationsnormalform.
+    \item[$NNF_{AL}$] Basiselemente: $0, 1, X_i, \neg X_i$ für $i \in \mathbb{N}$, Induktionsregeln: $\varphi, \psi \in NNF_{AL} $, so sind: $(\varphi \wedge \psi) \in NNF_{AL} \text{ und } (\varphi \vee \psi) \in NNF_{AL}$
+    \item[Lemma 2.6] Sind $\varphi$ und $\psi$ einfache Konjunktionen mit $vars(\varphi) = vars(\psi)$, so gilt $\varphi \equiv \psi$
+    \item[Lemma 2.7] Seien $\mathcal{M}$ und $\mathcal{M}'$ Klauselmengen und $K_0$ eine Klausel. Dann gilt:\\
+            \begin{align*}
+              \bigwedge \bigvee \mathcal{M} \wedge \bigvee K_0 &\equiv \bigwedge \bigvee(\mathcal{M} \cup \{ K_0 \}) & \text{(2.7)}\\
+              \bigwedge \bigvee \mathcal{M} \vee \bigvee K_0 &\equiv \bigwedge \bigvee(K \cup K_0 : K \in \mathcal{M}) & \text{(2.8)}\\
+              \bigwedge \bigvee \mathcal{M} \wedge \bigvee \mathcal{M}' &\equiv \bigwedge \bigvee(\mathcal{M} \cup \mathcal{M}') & \text{(2.9)}\\
+              \bigwedge \bigvee \mathcal{M} \vee \bigvee \mathcal{M}' &\equiv \bigwedge \bigvee(K \cup K' : K \in \mathcal{M} \text{ und } K' \in \mathcal{M}') & \text{(2.10)}\\
+            \end{align*}
+    \item[Sazu 2.4] Zu jeder Formel $\varphi \in F_{AL}$ gibt es eine äquivalente Formel $knf(\varphi) \in KNF_{AL}$ und eine äquivalente Formel $dnf(\varphi) \in DNF_{AL}$
   \end{description}
 \end{document}
